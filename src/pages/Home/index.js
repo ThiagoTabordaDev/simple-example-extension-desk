@@ -8,7 +8,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { pink } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
-import { Tooltip, Typography } from '@mui/material';
+import { Tooltip } from '@mui/material';
 
 function Home() {
     const navigate = useNavigate();
