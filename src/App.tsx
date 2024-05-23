@@ -1,23 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { IframeMessageProxy } from 'iframe-message-proxy';
 import './App.css';
+import { BrowserRouter, Route, Routes as ReactRoutes } from 'react-router-dom';
+import Home from './pages/Home';
+import SendCommand from './pages/SendCommand';
+import Toast from './pages/Toast';
+import Loading from './pages/Loading';
+import CurrentTicket from './pages/CurrentTicket';
 
 function App() {
+  useEffect(() => {
+    IframeMessageProxy.listen();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <BrowserRouter>
+          <ReactRoutes>
+            <Route path='/' element={<Home />} />
+            <Route path='/current-ticket' element={<CurrentTicket />} />
+            <Route path='/send-command' element={<SendCommand />} />
+            <Route path='/toast' element={<Toast />} />
+            <Route path='/loading' element={<Loading />} />
+          </ReactRoutes>
+        </BrowserRouter>
       </header>
     </div>
   );
