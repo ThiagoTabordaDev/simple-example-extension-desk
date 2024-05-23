@@ -8,36 +8,45 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { pink } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip, Typography } from '@mui/material';
 
 function Home() {
     const navigate = useNavigate();
     const handleLoading = () => {
         console.error('handleLoading');
         IframeMessageProxy.sendMessage({
-          action: 'startLoading',
+            action: 'startLoading',
         });
         setTimeout(() => {
-          IframeMessageProxy.sendMessage({ action: 'stopLoading' });
+            IframeMessageProxy.sendMessage({ action: 'stopLoading' });
         }, 1000);
-      }
+    }
+
+
     return <div>
-        <Stack direction="column" spacing={2} alignItems={'flex-start'}>
-            <IconButton aria-label="ticket" color="secondary" onClick={() =>  navigate("/current-ticket")}>
-                <ConfirmationNumberIcon fontSize='large' />
-                Ticket Atual
+        <Stack direction="row" spacing={2} alignItems={'flex-start'}>
+            <IconButton aria-label="ticket" color="secondary" onClick={() => navigate("/current-ticket")}>
+                <Tooltip title="Ticket Atual" placement="top">
+                    <ConfirmationNumberIcon fontSize='large' />
+                </Tooltip>
             </IconButton>
-            <IconButton aria-label="SendCommand" title="SendCommand" color="success" onClick={() =>  navigate("/send-command")}>
-                <SendTimeExtensionIcon fontSize='large' />
-                SendCommand
-            </IconButton>
-            <IconButton aria-label="Toast" sx={{ color: pink[500] }} title='Toast' onClick={() =>  navigate("/toast")}>
-                <LocalFireDepartmentIcon fontSize='large' />
-                Toast
-            </IconButton>
-            <IconButton aria-label="Loading" title='Loading' color="primary" onClick={handleLoading} >
-                <RefreshIcon fontSize='large' />
-                Loading
-            </IconButton>
+            <Tooltip title="Envio de Comandos" placement="top">
+                <IconButton aria-label="SendCommand" title="SendCommand" color="success" onClick={() => navigate("/send-command")}>
+                    <SendTimeExtensionIcon fontSize='large' />
+                </IconButton>
+            </Tooltip>
+        </Stack>
+        <Stack direction="row" spacing={2} alignItems={'flex-start'}>
+            <Tooltip title="Toast">
+                <IconButton aria-label="Toast" sx={{ color: pink[500] }} title='Toast' onClick={() => navigate("/toast")}>
+                    <LocalFireDepartmentIcon fontSize='large' />
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Loading">
+                <IconButton aria-label="Loading" title='Loading' color="primary" onClick={handleLoading} >
+                    <RefreshIcon fontSize='large' />
+                </IconButton>
+            </Tooltip>
         </Stack>
     </div>
 }

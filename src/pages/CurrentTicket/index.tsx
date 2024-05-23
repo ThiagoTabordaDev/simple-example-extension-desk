@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IframeMessageProxy } from 'iframe-message-proxy';
-import { Divider, IconButton } from '@mui/material';
+import { Divider, IconButton, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,22 +36,21 @@ function CurrentTicket() {
       setResult({} as CurrentTicketResponse);
     }
   }
-  const styled = { display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }
   return (
     <div>
       {result.sequentialId ? (
-        <div style={styled as React.CSSProperties}>
-          <h3>Ticket Selecionado</h3>
+        <div className='items-start'>
+          <Typography variant='h5' mb={1}>Ticket Selecionado</Typography>
           <Divider />
-          <p>{`Id Sequencial: ${result.sequentialId}`}</p>
-          <p>{`Bot: ${result.ownerIdentity}`}</p>
-          <p>{`Cliente: ${result.customerIdentity}`}</p>
-          <p>{`Atendente: ${result.agentIdentity}`}</p>
-          <h4>Mensagens</h4>
-          <Divider />
+          <Typography >{`Id Sequencial: ${result.sequentialId}`}</Typography>
+          <Typography>{`Bot: ${result.ownerIdentity}`}</Typography>
+          <Typography>{`Cliente: ${result.customerIdentity}`}</Typography>
+          <Typography>{`Atendente: ${result.agentIdentity}`}</Typography>
+          <Typography variant='h5' mb={1} mt={3}>Mensagens</Typography>
+          <Divider color='primary'/>
           {result.messages.map((message) => (
-            <div key={message.id} style={styled as React.CSSProperties}>
-              <p>{`${message.content}`}</p>
+            <div key={message.id} className='items-start'>
+              <Typography>{`${message.content}`}</Typography>
             </div>
           ))}
         </div>
@@ -62,7 +61,7 @@ function CurrentTicket() {
       <div>
         <IconButton aria-label="Home" title='Home' onClick={() => navigate("/")}>
           <HomeIcon />
-          Voltar
+          <Typography variant='button'> Voltar </Typography>
         </IconButton>
       </div>
     </div>

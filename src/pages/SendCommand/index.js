@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Divider, IconButton, TextField } from '@mui/material';
+import { Divider, IconButton, TextField, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 import { IframeMessageProxy } from 'iframe-message-proxy';
@@ -19,52 +19,65 @@ function SendCommand() {
     }
     const [result, setResult] = useState('');
     const handleIframeProxy = async () => {
-        console.error('handleIframeProxy');
         try {
             const { response } = await IframeMessageProxy.sendMessage({
                 action: 'sendCommand',
-                content: { command: command }
+                content: { command: JSON.parse(content.replaceAll(',\n', ',')) }
             });
             const item = response;
             setResult(JSON.stringify(item).replaceAll(',', ',\n'));
         } catch (error) {
             setResult('');
-        } 
+        }
     }
 
     const navigate = useNavigate();
     const [content, setContent] = useState(JSON.stringify(command).replaceAll(',', ',\n'));
-    return <div style={{ width: '80%' }}>
-        <h3>SendCommand</h3>
-        <TextField
-            id="standard-multiline-static"
-            label="Comando"
-            multiline
-            style={{ width: '100%' }}
-            fullWidth="true"
-            rows={10}
-            defaultValue={content}
-            variant="standard"
-            onChange={(e) => setContent(e.target.value)}
-        />
-        {result &&
-            <div>
-                <IconButton aria-label="Limpar" color='Primary' title='Limpar' fontsize="small" onClick={()=>{setResult('')}}>
-                    <DeleteForeverIcon /> Limpar
-                </IconButton>
-                <div>
-                    {`Resposta: ${result}`}
-                </div>
-            </div>}
+    return <div className='w-100'>
+        <div className='items-start'>
+            <Typography variant="h5" mb={1}>SendCommand</Typography>
+            <Divider />
+            <TextField
+                id="standard-multiline-static"
+                label="Comando"
+                multiline
+                style={{ width: '100%' }}
+                fullWidth="true"
+                rows={8}
+                defaultValue={content}
+                variant="standard"
+                onChange={(e) => setContent(e.target.value)}
+            />
+            {result &&
+                <div className='w-100'>
+                    <IconButton aria-label="Limpar" color='primary' title='Limpar' fontsize="small" onClick={() => { setResult('') }}>
+                        <DeleteForeverIcon />
+                        <Typography variant='button'> Limpar </Typography>
+                    </IconButton>
+                    <TextField
+                        id="standard-multiline-static"
+                        label="Response"
+                        multiline
+                        style={{ width: '100%' }}
+                        fullWidth="true"
+                        disabled
+                        rows={8}
+                        defaultValue={result}
+                        variant="standard"
+                        onChange={(e) => setResult(e.target.value)}
+                    />
+                </div>}
+        </div>
         <Divider />
         <div >
             <Divider />
             <IconButton aria-label="Home" color='Primary' title='Home' fontsize="small" onClick={() => navigate("/")}>
-                <HomeIcon /> Voltar
+                <HomeIcon />
+                <Typography variant='button'> Voltar </Typography>
             </IconButton>
-            <IconButton aria-label="Comando" title='Comando' onClick={handleIframeProxy} fontsize="small">
+            <IconButton aria-label="Comando" title='Comando' color="success" onClick={handleIframeProxy} fontsize="small">
                 <SendTimeExtensionIcon />
-                Enviar Commando
+                <Typography variant='button'> Enviar Commando </Typography>
             </IconButton>
         </div>
     </div>;
