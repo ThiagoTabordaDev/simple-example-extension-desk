@@ -33,10 +33,10 @@ function SendCommand() {
 
     const navigate = useNavigate();
     const [content, setContent] = useState(JSON.stringify(command).replaceAll(',', ',\n'));
-    return <div className='w-100'>
-        <div className='items-start'>
-            <Typography variant="h5" mb={1}>SendCommand</Typography>
-            <Divider />
+    return <>
+        <Typography variant="h5" mb={1}>Envio de comando</Typography>
+        <Divider orientation="horizontal" flexItem />
+        <div className='body'>
             <TextField
                 id="standard-multiline-static"
                 label="Comando"
@@ -68,9 +68,8 @@ function SendCommand() {
                     />
                 </div>}
         </div>
-        <Divider />
-        <div >
-            <Divider />
+        <div className='w-100'>
+            <Divider orientation="horizontal" flexItem />
             <IconButton aria-label="Home" color='Primary' title='Home' fontsize="small" onClick={() => navigate("/")}>
                 <HomeIcon />
                 <Typography variant='button'> Voltar </Typography>
@@ -80,7 +79,7 @@ function SendCommand() {
                 <Typography variant='button'> Enviar Commando </Typography>
             </IconButton>
         </div>
-    </div>;
+    </>;
 }
 
 export default SendCommand;

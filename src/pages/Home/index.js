@@ -8,7 +8,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { pink } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
-import { Tooltip } from '@mui/material';
+import { Divider, Tooltip, Typography } from '@mui/material';
 
 function Home() {
     const navigate = useNavigate();
@@ -23,32 +23,36 @@ function Home() {
     }
 
 
-    return <div>
-        <Stack direction="row" spacing={2} alignItems={'flex-start'}>
-            <IconButton aria-label="ticket" color="secondary" onClick={() => navigate("/current-ticket")}>
-                <Tooltip title="Ticket Atual" placement="top">
-                    <ConfirmationNumberIcon fontSize='large' />
-                </Tooltip>
-            </IconButton>
-            <Tooltip title="Envio de Comandos" placement="top">
-                <IconButton aria-label="SendCommand" title="SendCommand" color="success" onClick={() => navigate("/send-command")}>
-                    <SendTimeExtensionIcon fontSize='large' />
-                </IconButton>
-            </Tooltip>
-        </Stack>
-        <Stack direction="row" spacing={2} alignItems={'flex-start'}>
-            <Tooltip title="Toast">
-                <IconButton aria-label="Toast" sx={{ color: pink[500] }} title='Toast' onClick={() => navigate("/toast")}>
-                    <LocalFireDepartmentIcon fontSize='large' />
-                </IconButton>
-            </Tooltip>
-            <Tooltip title="Loading">
-                <IconButton aria-label="Loading" title='Loading' color="primary" onClick={handleLoading} >
-                    <RefreshIcon fontSize='large' />
-                </IconButton>
-            </Tooltip>
-        </Stack>
-    </div>
+    return <>
+        <Typography variant='h5'>Exemplo para extensões no Blip Desk</Typography>
+        <Divider orientation="horizontal" flexItem />
+        <div className='body'>
+            <div>
+                <Stack direction="row" spacing={{ xs: 1, sm: 2 }} useFlexGap flexWrap="wrap" divider={<Divider orientation="vertical" flexItem />}>
+                    <IconButton aria-label="ticket" color="secondary" onClick={() => navigate("/current-ticket")}>
+                        <Tooltip title="Ticket Atual" placement="top">
+                            <ConfirmationNumberIcon fontSize='large' />
+                        </Tooltip>
+                    </IconButton>
+                    <Tooltip title="Envio de Comandos" placement="top">
+                        <IconButton aria-label="SendCommand" title="SendCommand" color="success" onClick={() => navigate("/send-command")}>
+                            <SendTimeExtensionIcon fontSize='large' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Toast">
+                        <IconButton aria-label="Toast" sx={{ color: pink[500] }} title='Toast' onClick={() => navigate("/toast")}>
+                            <LocalFireDepartmentIcon fontSize='large' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Loading">
+                        <IconButton aria-label="Loading" title='Loading' color="primary" onClick={handleLoading} >
+                            <RefreshIcon fontSize='large' />
+                        </IconButton>
+                    </Tooltip>
+                </Stack>
+            </div>
+        </div>
+    </>
 }
 
 export default Home;
