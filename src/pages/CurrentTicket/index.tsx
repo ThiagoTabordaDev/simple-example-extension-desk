@@ -61,7 +61,7 @@ function CurrentTicket() {
           <Typography variant='h6' mb={1}>Não há ticket selecionado...</Typography>
         )}
       </div>
-      <div className='w-100'>
+      <div className='footer'>
         <Divider  orientation="horizontal" flexItem />
         <IconButton aria-label="Home" title='Home' onClick={() => navigate("/")}>
           <HomeIcon />

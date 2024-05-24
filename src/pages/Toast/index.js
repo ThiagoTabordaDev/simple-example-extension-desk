@@ -61,7 +61,7 @@ function Toast() {
                 />
             </FormControl>
         </div>
-        <div className='w-100'>
+        <div className='footer'>
         <Divider  orientation="horizontal" flexItem />
             <IconButton aria-label="Toast" color='Primary' title='Toast' fontsize="small" onClick={() => navigate("/")}>
                 <HomeIcon />

@@ -68,7 +68,7 @@ function SendCommand() {
                     />
                 </div>}
         </div>
-        <div className='w-100'>
+        <div className='footer'>
             <Divider orientation="horizontal" flexItem />
             <IconButton aria-label="Home" color='Primary' title='Home' fontsize="small" onClick={() => navigate("/")}>
                 <HomeIcon />
