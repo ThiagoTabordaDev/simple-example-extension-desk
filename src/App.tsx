@@ -7,6 +7,8 @@ import SendCommand from './pages/SendCommand';
 import Toast from './pages/Toast';
 import Loading from './pages/Loading';
 import CurrentTicket from './pages/CurrentTicket';
+import ClosureTicket from './pages/TicketClosure';
+import SendTextMessage from './pages/SendTextMessage';
 
 function App() {
   useEffect(() => {
@@ -23,6 +25,9 @@ function App() {
             <Route path='/send-command' element={<SendCommand />} />
             <Route path='/toast' element={<Toast />} />
             <Route path='/loading' element={<Loading />} />
+            <Route path='/closure-ticket' element={<ClosureTicket />} />
+            <Route path='/send-text-message' element={<SendTextMessage />} />
+            <Route path='/' element={<ClosureTicket />} />
           </ReactRoutes>
         </BrowserRouter>
       </header>

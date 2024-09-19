@@ -7,6 +7,7 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AirplaneTickeIcon from '@mui/icons-material/AirplaneTicket';
+import SendIcon from '@mui/icons-material/Send';
 import { pink } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import { Divider, Tooltip, Typography } from '@mui/material';
@@ -57,6 +58,11 @@ function Home() {
                     <Tooltip title="Encerramento de Ticket">
                         <IconButton aria-label="Encerramento de Ticket" title='Encerramento de Ticket' color="primary" onClick={openModalClosedTicket} >
                             <AirplaneTickeIcon fontSize='large' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Enviar mensagem para o contato">
+                        <IconButton aria-label="Enviar Mensagem" title='Enviar Menssagem' color="primary" onClick={() => navigate("/send-text-message")} >
+                            <SendIcon fontSize='large' />
                         </IconButton>
                     </Tooltip>
                 </Stack>

@@ -11,7 +11,7 @@ function Toast() {
     const [type, setType] = React.useState('success');
     const [icon, setIcon] = React.useState('like');
     const [message, setMessage] = React.useState('Olá Blip!');
-    const showToast = () => IframeMessageProxy.sendMessage({ action: 'toast', content: { type: type, icon: icon, message: message, buttontext: 'ok', duration: 5, position: 'top-right' } });
+    const showToast = () => IframeMessageProxy.sendMessage({ action: 'toast', content: { type, icon, message, buttontext: 'ok', duration: 5, position: 'top-right' } });
     const navigate = useNavigate();
     return <>
         <Typography variant='h5'>Exemplo para extensões no Blip Desk</Typography>
