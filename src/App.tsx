@@ -9,6 +9,7 @@ import Loading from './pages/Loading';
 import CurrentTicket from './pages/CurrentTicket';
 import ClosureTicket from './pages/TicketClosure';
 import SendTextMessage from './pages/SendTextMessage';
+import SendCustomContentMessage from './pages/SendCustomContentMessage';
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
             <Route path='/loading' element={<Loading />} />
             <Route path='/closure-ticket' element={<ClosureTicket />} />
             <Route path='/send-text-message' element={<SendTextMessage />} />
+            <Route path='/send-custom-content-message' element={<SendCustomContentMessage />} />
             <Route path='/' element={<ClosureTicket />} />
           </ReactRoutes>
         </BrowserRouter>

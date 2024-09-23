@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import SendTimeExtensionIcon from '@mui/icons-material/SendTimeExtension';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import SendTimeExtensionSharpIcon from '@mui/icons-material/SendTimeExtensionSharp';
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AirplaneTickeIcon from '@mui/icons-material/AirplaneTicket';
@@ -63,6 +64,11 @@ function Home() {
                     <Tooltip title="Enviar mensagem para o contato">
                         <IconButton aria-label="Enviar Mensagem" title='Enviar Menssagem' color="primary" onClick={() => navigate("/send-text-message")} >
                             <SendIcon fontSize='large' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Enviar mensagem quick replay para o contato">
+                        <IconButton aria-label="Enviar Mensagem" title='Enviar Menssagem' color="primary" onClick={() => navigate("/send-custom-content-message")} >
+                            <SendTimeExtensionSharpIcon fontSize='large' />
                         </IconButton>
                     </Tooltip>
                 </Stack>
