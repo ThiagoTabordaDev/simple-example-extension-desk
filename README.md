@@ -5,11 +5,12 @@ Breve descrição do projeto.
 ## Instalação
 
 1. Clone o repositório.
-2. Execute o comando `npm install` para instalar as dependências.
+2. Execute o comando `npm install` para instalar as dependências;
+3. Execute o comando `npm start` para executar o projeto.
 
 ## Uso
 
-Explique como usar o projeto e forneça exemplos de código, se necessário.
+Aplicação utiliza a biblioteca iframeProxy
 
 ## Contribuição
 
